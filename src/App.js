@@ -2,10 +2,15 @@ import React, { useState } from "react";
 import "./App.css";
 import { MovieList } from "./MovieList";
 import { Search } from "./Search";
+import {BrowserRouter , Route} from "react-router-dom"
+import Description from "./Description";
+import {link} from "react-router-dom";
+
 
 function App() {
   const [movies, setMovies] = useState([
     {
+      
       main_img:
         "https://cdn.telanganatoday.com/wp-content/uploads/2019/05/Aladdin.jpg",
       second_img:
@@ -17,7 +22,8 @@ function App() {
       genre: "Action, imaginer, Fantasy",
       description:
         "About the famous classic story, where (Aladdin) is a street child wandering the streets of a large crowded city with his loyal friend the monkey (Apo), so he encounters Princess (Jasmine) and falls in love with her, but he goes to prison and gets involved in a plot to rule the land planned by the Sultan's advisor (Jafar) With the help of a mysterious lamp he has magical powers.",
-    },
+      
+      },
     {
       main_img: "https://m.media-amazon.com/images/M/MV5BMTY5OTU0OTc2NV5BMl5BanBnXkFtZTcwMzU4MDcyMQ@@._V1_.jpg",
       second_img:
@@ -29,7 +35,8 @@ function App() {
       genre: "Action, Fantasy",
       description:
         "Lara Croft, the fiercely independent daughter of a missing adventurer, must push herself beyond her limits when she finds herself on the island where her father disappeared.",
-    },
+        
+      },
     {
       main_img: "https://mr.comingsoon.it/imgdb/locandine/235x336/53715.jpg",
       second_img:
@@ -41,7 +48,8 @@ function App() {
       genre: "Action, Adventure, Sci-Fi",
       description:
         "T'Challa, the King of Wakanda, rises to the throne in the isolated, technologically advanced African nation, but his claim is challenged by a vengeful outsider who was a childhood victim of T'Challa's father's mistake.",
-    },
+      
+      },
   ]);
   const [keyword, setKeyword] = useState("");
   const [newRate, setNewRate] = useState(1);
@@ -59,6 +67,7 @@ function App() {
   };
 
   return (
+    <BrowserRouter>
     <div className="container">
       <Search search={search} setRate={setRate} newRate={newRate} />
       <MovieList
@@ -70,6 +79,9 @@ function App() {
         )}
       />
     </div>
+    <Route path="/movie/:title" render={(props) =>  <Description {...props} movies={movies} />}/>
+    </BrowserRouter>
+    
   );
 }
 
