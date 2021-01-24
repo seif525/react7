@@ -9,7 +9,7 @@ const MovieCard = ({ movie }) => {
     "https://everyfad.com/static/images/movie_poster_placeholder.29ca1c87.svg";
   return (
     <div
-      className="col-6 movie_card my-2"
+      className="col-3 movie_card my-2"
       style={{
         backgroundImage: `linear-gradient(45deg, white, rgba(255,255,255,.7)), url(${
           movie.second_img || backUp
@@ -20,7 +20,7 @@ const MovieCard = ({ movie }) => {
         <div className="left_side_inner">
           <img src={movie.main_img || mainBackUp} alt="movie image" />
           <div>
-            <h1>{movie.title}</h1>
+          <h1>{movie.title}</h1>
             <p>{movie.date}</p>
             <div className="d-flex">
               <p className="duration mr-2">{movie.duration}</p>
